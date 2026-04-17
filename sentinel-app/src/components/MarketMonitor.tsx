@@ -20,17 +20,12 @@ export default function MarketMonitor() {
 
     const getLeads = async () => {
         setLoading(true);
-        const { data, error } = await supabase.from('market_leads').select();
-        if (error) {
-            console.error('Error fetching leads:', error);
-        } else {
-            console.log("data:", data);
-            setLeads(data || []);
-        }
+        const { data, error } = await supabase.functions.invoke('get-market-insights');
+
+        if (error) console.error('Function error:', error);
+        else setLeads(data || []);
         setLoading(false);
     };
-
-    console.log("leads:", leads);
 
     return (
         <div className="max-w-6xl mx-auto p-6 space-y-8">
