@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/upabaseClient";
+import { supabase } from "../lib/supabaseClient";
 
 interface Lead {
     id: number;
